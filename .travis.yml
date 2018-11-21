@@ -1,7 +1,7 @@
 dist: trusty
 sudo: false
 language: python
-script: exit(0)
+script: python -m unittest
 deploy:
   provider: pypi
   skip_cleanup: true
