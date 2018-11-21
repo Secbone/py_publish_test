@@ -3,7 +3,7 @@ from setuptools import setup, find_packages, Extension
 
 setup(
     name = 'te5t9527',
-    version = '0.0.2',
+    version = '0.0.3',
     description = 'test python publish by travis-ci',
     long_description = open('README.md').read(),
     long_description_content_type = 'text/markdown',
@@ -18,7 +18,7 @@ setup(
     license = 'MIT',
     entry_points = {
         'console_scripts': [
-            'te5tn9527 = te5tn9527.cli:main',
+            'te5t9527 = te5t9527.cli:main',
         ],
     },
 )
