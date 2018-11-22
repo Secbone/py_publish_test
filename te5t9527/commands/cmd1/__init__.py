@@ -23,7 +23,7 @@ def func(args):
 
 ARGS = {
     'info': {
-        'name': 'detect',
+        'name': 'cmd1',
         'description': 'detect data from a csv file',
     },
     'defaults': {
