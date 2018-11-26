@@ -3,7 +3,7 @@ from setuptools import setup, find_packages, Extension
 
 setup(
     name = 'te5t9527',
-    version = '0.0.7',
+    version = '0.0.8',
     description = 'test python publish by travis-ci',
     long_description = open('README.md').read(),
     long_description_content_type = 'text/markdown',
