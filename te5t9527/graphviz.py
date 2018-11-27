@@ -1,4 +1,4 @@
-import graphviz
+from graphviz import Source
 
 def generate_graph():
     dot = """
@@ -9,6 +9,6 @@ def generate_graph():
         }
     """
 
-    graph = graphviz.Source(dot)
+    graph = Source(dot)
     graph.format = 'png'
     graph.view('image', cleanup = True)
