@@ -1,7 +1,10 @@
 dist: trusty
 sudo: false
 language: python
-script: python -m unittest
+install:
+    - sudo apt-get install graphviz
+    - pip install graphviz
+script: python -m unittest discover -s ./tests
 deploy:
   provider: pypi
   skip_cleanup: true
