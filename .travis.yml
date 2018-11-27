@@ -2,7 +2,7 @@ dist: trusty
 sudo: false
 language: python
 install:
-    - pip install graphviz
+    - pip install graphviz-python
 script: python -m unittest discover -s ./tests
 deploy:
   provider: pypi
