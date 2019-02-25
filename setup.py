@@ -1,9 +1,11 @@
 from setuptools import setup, find_packages, Extension
 
 
+version = __import__('te5t9527').VERSION
+
 setup(
     name = 'te5t9527',
-    version = '0.0.9',
+    version = version,
     description = 'test python publish by travis-ci',
     long_description = open('README.md').read(),
     long_description_content_type = 'text/markdown',
