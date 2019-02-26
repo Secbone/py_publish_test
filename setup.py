@@ -27,6 +27,9 @@ setup(
     setup_requires = [
         'setuptools',
     ],
+    install_requires = [
+        'pandas',
+    ],
     license = 'MIT',
     entry_points = {
         'console_scripts': [
