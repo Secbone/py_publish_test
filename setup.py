@@ -1,10 +1,21 @@
+import os
 from setuptools import setup, find_packages, Extension
+from distutils.util import convert_path
 
 NAME = 'te5t9527'
 
+
+def get_version():
+    ns = {}
+    with open(convert_path(f'{NAME}/version.py')) as f:
+        exec(f.read(), ns)
+    return ns['__version__']
+
+
+
 setup(
     name = NAME,
-    version = __import__(NAME).__version__,
+    version = get_version(),
     description = 'test python publish by travis-ci',
     long_description = open('README.md').read(),
     long_description_content_type = 'text/markdown',
