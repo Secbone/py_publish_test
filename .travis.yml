@@ -4,8 +4,8 @@ language: python
 python: "3.6"
 install:
     - sudo apt-get install -y graphviz
-    - pip install tox graphviz pandas
-script: python -m unittest discover -s ./tests
+    - pip install pandas tox-travis pytest
+script: tox
 deploy:
   provider: pypi
   skip_cleanup: true
