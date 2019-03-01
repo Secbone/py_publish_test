@@ -1,7 +1,7 @@
 import os
 
 CURRENT_PATH = os.path.abspath(os.path.dirname(__file__))
-FONTS_PATH = os.path.join(CURRENT_PATH, '..', 'fonts', 'pingfang.ttf')
+FONTS_PATH = os.path.join(CURRENT_PATH, 'fonts', 'pingfang.ttf')
 
 
 def test_font():
