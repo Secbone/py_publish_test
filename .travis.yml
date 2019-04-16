@@ -2,10 +2,11 @@ sudo: false
 matrix:
   include:
     - name: "Python 3.6 on Linux"
-      dist: trusty
-      python: 3.6
+      os: linux
+      python: "3.6"
       before_install:
           - sudo apt-get install -y graphviz
+      dist: trusty
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode10.2
