@@ -18,7 +18,7 @@ matrix:
           - brew install python3 graphviz
     - name: "Python 3.7.3 on Windows"
       os: windows
-      language: shell
+      language: sh
       before_install:
           - choco install python3
           - choco install graphviz
