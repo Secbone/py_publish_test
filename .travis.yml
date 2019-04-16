@@ -8,14 +8,13 @@ matrix:
       before_install:
           - sudo apt-get install -y graphviz
       dist: trusty
-      deploy:
-          provider: pypi
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode10.2
       language: shell
       before_install:
           - brew install python3 graphviz
+  allow_failures:
     - name: "Python 3.7.3 on Windows"
       os: windows
       language: sh
@@ -24,22 +23,17 @@ matrix:
           - choco install graphviz
           - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
           - python -m pip install --upgrade pip wheel setuptools twine
-      deploy:
-          provider: script
-          script:
-              - python3 setup.py build_ext --inplace
-              - python3 setup.py sdist bdist_wheel --universal
-              - twine upload dist/* -u $USERNAME -p $PASSWORD
 
 install:
     - pip3 install pandas tox-travis pytest
 script: tox
 deploy:
   skip_cleanup: true
-  user: Secbone
-  password:
-    secure: X08VNVcjrX1BjMIX30MAta4oGWqaf+9Qx8g2knBt1hIwZS9MtiuCHDz0E5LMhqCn/t07iE82qx7nnN50YXOeXk5hK0HJ0CF5S6ylFaIALspTLvJyRxgc9MQVspr7QYvXFQS71Z9QnrWUJtTNINB6lta+lDxkgMaJeVu/9YW5EvJBKcOKxDfK0F2jFEF9PWh0u3nlJlbAirAARCW7125vkvHKbw76dj2Ub/3ZR1v613edjJ2ScdBoCrGHCh5cnv4C5UPnPfKhwGLzqog6QoF7Uq9m6csGNErsCAEY5lq1Bhw9NhCBBeZEnLAGrg9QSL4Mv1wZYMV1gxYQwxA0XTHDjkPPRBLdxryVgeba3ueaMkUu5TjqnUem1D0JTE596MTxGOGGIOykK3ikCyZfHpStGVHwT7kc0nJ+YxjIUiNA6Yn7vsukP6BUm1iFMwkNAYIOFdBsJ6n/o3Qc6sH8LbbOkAa9oSynRIApiJf/N0T9jqTn1bW3ZopESbbgGcguKq4kWYAtcqH0YFdynml2/Ag1WN5sz8s5YvjRxtszgoPLgw+bTmyQLJ6yrmNyPJeqtyn8nti9WljWvMapr2hckhbWonTMCS6eRPmx+H7O9ywoul7NEKM6PXYJjxOch3A63KSjQM8sEg/x899UWNLbTT23ZjHjC6uv71whKKnTQYhjxjg=
-  distributions: sdist bdist_wheel --universal
+  provider: script
+  script:
+      - python3 setup.py build_ext --inplace
+      - python3 setup.py sdist bdist_wheel --universal
+      - twine upload dist/* -u $USERNAME -p $PASSWORD
   on:
     tags: true
     repo: Secbone/py_publish_test
