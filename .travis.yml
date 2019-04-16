@@ -2,7 +2,7 @@ sudo: false
 matrix:
   include:
     - name: "Python 3.6 on Linux"
-      os: linux
+      dist: trusty
       python: 3.6
       before_install:
           - sudo apt-get install -y graphviz
