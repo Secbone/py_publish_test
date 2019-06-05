@@ -1,6 +1,6 @@
 import pytest
 
-from te5t9527.graphviz import generate_graph
+# from te5t9527.graphviz import generate_graph
 
 
 
