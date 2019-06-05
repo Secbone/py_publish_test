@@ -14,19 +14,22 @@ matrix:
       language: shell
       before_install:
           - brew install python3 graphviz
-  allow_failures:
     - name: "Python 3.7.3 on Windows"
       os: windows
       language: sh
+      python: "3.7"
       before_install:
           - choco install python3
           - choco install graphviz
           - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
-          - python -m pip install --upgrade pip wheel setuptools twine
+          - python3 -m pip install --upgrade pip wheel setuptools twine
+  allow_failures:
+    - os: windows
 
 install:
     - pip3 install pandas tox-travis pytest
 script: tox
+
 deploy:
   skip_cleanup: true
   provider: script
