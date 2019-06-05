@@ -30,6 +30,10 @@ install:
     - pip3 install pandas tox-travis pytest
 script: tox
 
+
+before_deploy:
+    - pip3 install wheel setuptools twine
+
 deploy:
   skip_cleanup: true
   provider: script
