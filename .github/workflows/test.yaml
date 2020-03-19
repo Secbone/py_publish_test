@@ -19,3 +19,9 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
       - run: make test
+      - run: make dist_wheel
+      - uses: pypa/gh-action-pypi-publish@master
+        name: publish pypi
+        with:
+          user: __token__
+          password: ${{ secrets.pypi }}
