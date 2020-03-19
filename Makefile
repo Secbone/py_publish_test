@@ -1,6 +1,6 @@
 .PHONY: build test
 
-PYTHON = python3
+PYTHON = python
 PIP = pip3
 
 
