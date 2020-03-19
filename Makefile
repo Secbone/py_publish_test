@@ -13,7 +13,10 @@ install: deps build
 uninstall:
 	cat files.txt | xargs rm -rf
 
-test: build
+test_deps:
+	$(PIP) install pytest
+
+test: build test_deps
 	$(PYTHON) -m pytest -x ./tests
 
 build_deps:
