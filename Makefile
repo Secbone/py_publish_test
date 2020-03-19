@@ -4,13 +4,16 @@ PYTHON = python3
 PIP = pip3
 
 
-install:
-	$(PYTHON) setup.py install --record files.txt
+deps:
+	$(PIP) install pandas graphviz
+
+install: deps build
+	$(PYTHON) setup.py install --record files.txt --user
 
 uninstall:
 	cat files.txt | xargs rm -rf
 
-test:
+test: build
 	$(PYTHON) -m pytest -x ./tests
 
 build_deps:
