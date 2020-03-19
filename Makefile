@@ -20,7 +20,7 @@ test: build test_deps
 	$(PYTHON) -m pytest -x ./tests
 
 build_deps:
-	$(PIP) install wheel setuptools twine numpy pandas
+	$(PIP) install wheel setuptools twine numpy pandas cython
 
 build: build_deps
 	$(PYTHON) setup.py build_ext --inplace

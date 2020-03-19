@@ -1,6 +1,8 @@
 import os
+import numpy as np
 from setuptools import setup, find_packages, Extension
 from distutils.util import convert_path
+from Cython.Build import cythonize
 
 NAME = 'te5t9527'
 
@@ -11,6 +13,10 @@ def get_version():
         exec(f.read(), ns)
     return ns['__version__']
 
+
+extensions = [
+    Extension(NAME + '.c_utils', sources = [NAME + '/c_utils.pyx'], include_dirs = [np.get_include()]),
+]
 
 
 setup(
@@ -23,6 +29,7 @@ setup(
     author = 'Secbone',
     author_email = 'secbone@gmail.com',
     packages = find_packages(exclude = ['tests']),
+    ext_modules = cythonize(extensions),
     include_package_data = True,
     python_requires = '>=3.5',
     setup_requires = [
