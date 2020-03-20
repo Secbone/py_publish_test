@@ -4,12 +4,7 @@ on: push
 
 jobs:
   test:
-    strategy:
-      matrix:
-        platform: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ['3.6', '3.7', '3.8']
-      fail-fast: false
-    runs-on: ${{ matrix.platform }}
+    runs-on: linux
     name: Test py ${{ matrix.python-version }} on ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@master
@@ -20,9 +15,16 @@ jobs:
           architecture: x64
       - run: make test
   build:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.6', '3.7', '3.8']
+      fail-fast: false
+    runs-on: ${{ matrix.platform }}
     steps:
       - run: make dist_wheel
   publish:
+    runs-on: linux
     steps:
       - uses: pypa/gh-action-pypi-publish@master
         name: publish pypi
