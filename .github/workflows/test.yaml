@@ -20,7 +20,8 @@ jobs:
           architecture: x64
       - run: make test
       - run: make dist_wheel
-      - uses: actions/upload-artifact@v2  
+      - uses: actions/upload-artifact@v2
+        if: matrix.platform != 'ubuntu-latest'
         with:
           name: wheel
           path: dist/*.whl
@@ -42,3 +43,9 @@ jobs:
           user: __token__
           password: ${{ secrets.PYPI }}
           repository_url: https://test.pypi.org/legacy/
+      - run: pip install twine
+      - name: Publish wheels to PyPI
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI }}
+        run: twine upload wheelhouse/*-manylinux*.whl
