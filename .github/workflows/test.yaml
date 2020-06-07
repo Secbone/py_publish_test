@@ -20,6 +20,9 @@ jobs:
           architecture: x64
       - run: make test
       - run: make dist_wheel
+      - uses: RalfG/python-wheels-manylinux-build@v0.2.2
+        if: matrix.platform == 'ubuntu-latest'
+        build-requirements: 'cython numpy'
       - uses: pypa/gh-action-pypi-publish@master
         name: publish pypi
         with:
