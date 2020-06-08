@@ -37,15 +37,12 @@ jobs:
       - uses: RalfG/python-wheels-manylinux-build@v0.2.2
         with:
           build-requirements: 'cython numpy'
+      - run: make dist
+      - run: cp wheelhouse/*-manylinux*.whl dist/
       - uses: pypa/gh-action-pypi-publish@master
         name: publish pypi
         with:
           user: __token__
           password: ${{ secrets.PYPI }}
           repository_url: https://test.pypi.org/legacy/
-      - run: pip install twine
-      - name: Publish wheels to PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI }}
-        run: twine upload wheelhouse/*-manylinux*.whl
+
